@@ -1,0 +1,262 @@
+# MkDocs configuration for the Orion Platform 4.2 LTS documentation.
+# Live preview:  mkdocs serve
+# Build:         mkdocs build --strict
+
+site_name: Orion Platform 4.2 LTS
+site_url: https://docs.orion.example.com/
+site_description: Orion Platform documentation - orders, payments, and events for stores and marketplaces.
+site_author: Nimbus Software sp. z o.o.
+copyright: >
+  Copyright &copy; 2026 Nimbus Software sp. z o.o. -
+  entirely fictional content, prepared as an example MkDocs documentation set.
+
+repo_url: https://github.com/nimbus-software/orion-platform
+repo_name: nimbus-software/orion-platform
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+
+# ---------------------------------------------------------------------------
+# Material theme
+# ---------------------------------------------------------------------------
+theme:
+  name: material
+  language: en
+  custom_dir: overrides
+
+  palette:
+    # Follows the system setting
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Follow system preference
+
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+  icon:
+    logo: material/cube-outline
+    repo: fontawesome/brands/github
+    admonition:
+      note: material/pencil-circle
+      warning: material/alert-circle
+
+  features:
+    # Navigation: a vertical tree in the left sidebar.
+    #
+    # Horizontal menus would come from navigation.tabs and
+    # navigation.tabs.sticky. Leaving them out moves the top-level sections into
+    # the sidebar. These are intentionally off as well:
+    #   navigation.sections - renders sections permanently as group headers,
+    #   navigation.expand   - expands the whole tree right away,
+    #   navigation.prune    - drops branches outside the current path from HTML.
+    # The tree therefore stays collapsed to the first level, and branches open on
+    # click or when a page from that section is visited.
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    # Search
+    - search.suggest
+    - search.highlight
+    - search.share
+    # Content
+    - content.action.edit
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+
+# ---------------------------------------------------------------------------
+# Plugins
+# ---------------------------------------------------------------------------
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;'
+  - tags
+
+# ---------------------------------------------------------------------------
+# Markdown extensions
+# ---------------------------------------------------------------------------
+markdown_extensions:
+  # Standard
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Link to this section
+      toc_depth: 3
+
+  # PyMdown Extensions
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# ---------------------------------------------------------------------------
+# Extras
+# ---------------------------------------------------------------------------
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  status:
+    new: New in 4.2
+    deprecated: Deprecated
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nimbus-software/orion-platform
+      name: Source code
+    - icon: fontawesome/solid/life-ring
+      link: https://support.nimbus.example.com
+      name: Support portal
+    - icon: fontawesome/solid/signal
+      link: https://status.nimbus.example.com
+      name: Service status
+
+# Link validation - with --strict every warning fails the build.
+validation:
+  nav:
+    omitted_files: warn
+    not_found: warn
+  links:
+    not_found: warn
+    anchors: warn
+    absolute_links: warn
+    unrecognized_links: warn
+
+# ---------------------------------------------------------------------------
+# Navigation (4 levels deep)
+# ---------------------------------------------------------------------------
+nav:
+  - Home: index.md
+
+  - Introduction:
+      - introduction/index.md
+      - What is Orion Platform: introduction/what-is-orion.md
+      - Architecture: introduction/architecture.md
+      - Glossary: introduction/glossary.md
+
+  - Getting started:
+      - getting-started/index.md
+      - Requirements: getting-started/requirements.md
+      - Installation:
+          - getting-started/installation/index.md
+          - Docker Compose: getting-started/installation/docker.md
+          - Kubernetes:
+              - getting-started/installation/kubernetes/index.md
+              - Helm: getting-started/installation/kubernetes/helm.md
+              - Operator: getting-started/installation/kubernetes/operator.md
+          - System packages: getting-started/installation/bare-metal.md
+      - Configuration:
+          - getting-started/configuration/index.md
+          - Environment variables: getting-started/configuration/environment-variables.md
+          - Profiles: getting-started/configuration/profiles.md
+      - First order: getting-started/first-order.md
+
+  - Guides:
+      - guides/index.md
+      - Authentication:
+          - guides/authentication/index.md
+          - OAuth2 client credentials: guides/authentication/oauth2.md
+          - API keys: guides/authentication/api-keys.md
+          - Roles and permissions: guides/authentication/roles-and-permissions.md
+      - Events:
+          - guides/events/index.md
+          - Queues and topics: guides/events/queues.md
+          - Retries and idempotency: guides/events/retries.md
+      - Migrations:
+          - guides/migrations/index.md
+          - From 3.8 LTS to 4.2 LTS: guides/migrations/from-3-8-to-4-2.md
+      - Multi-tenancy: guides/multi-tenancy.md
+
+  - API:
+      - api/index.md
+      - REST:
+          - api/rest/index.md
+          - Resources:
+              - Customers: api/rest/resources/customers.md
+              - Orders: api/rest/resources/orders.md
+              - Payments: api/rest/resources/payments.md
+          - Pagination and filtering: api/rest/pagination.md
+          - Rate limits: api/rest/rate-limits.md
+          - Error codes: api/rest/error-codes.md
+      - Webhooks:
+          - api/webhooks/index.md
+          - Event types: api/webhooks/event-types.md
+          - Signature verification: api/webhooks/signature-verification.md
+      - Client libraries:
+          - api/sdk/index.md
+          - Java: api/sdk/java.md
+          - Python: api/sdk/python.md
+
+  - Operations:
+      - operations/index.md
+      - Monitoring:
+          - operations/monitoring/index.md
+          - Metrics: operations/monitoring/metrics.md
+          - Logs: operations/monitoring/logs.md
+          - Alerts: operations/monitoring/alerts.md
+      - Backups: operations/backups.md
+      - Scaling and performance: operations/scaling.md
+      - Security: operations/security.md
+      - Runbooks:
+          - operations/runbooks/index.md
+          - PostgreSQL outage: operations/runbooks/database-outage.md
+          - Event queue backlog: operations/runbooks/queue-backlog.md
+
+  - Help:
+      - FAQ: faq.md
+      - Changelog: changelog.md
+      - Support: support.md

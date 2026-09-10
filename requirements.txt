@@ -1,0 +1,12 @@
+# Dependencies required to build the Orion Platform documentation.
+#
+# Install:  pip install -r requirements.txt
+# Build:    mkdocs build --strict
+#
+# Lower bounds instead of hard pins. Once a working set is established, it is
+# worth generating a frozen file:
+#   pip freeze > requirements.lock.txt
+
+mkdocs>=1.6
+mkdocs-material>=9.5
+pymdown-extensions>=10.11

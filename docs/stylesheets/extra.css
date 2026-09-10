@@ -1,0 +1,40 @@
+/* Small visual adjustments to the Material theme for the Orion Platform docs. */
+
+:root {
+  --md-code-font: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* Slightly wider content column, since the docs contain many reference tables. */
+.md-grid {
+  max-width: 68rem;
+}
+
+/* Reference tables: smaller text, no wrapping in the first column. */
+.md-typeset table:not([class]) {
+  font-size: 0.75rem;
+}
+
+.md-typeset table:not([class]) td:first-child code {
+  white-space: nowrap;
+}
+
+/* Highlight code inside tables (variable names, error codes). */
+.md-typeset table:not([class]) code {
+  background-color: var(--md-code-bg-color);
+}
+
+/* Status markers used by extra.status (new / deprecated). */
+.md-status--new::after {
+  background-color: var(--md-accent-fg-color);
+}
+
+/* Home page cards: even height and a subtle border. */
+.md-typeset .grid.cards > ul > li {
+  border-radius: 0.4rem;
+  transition: border-color 125ms, box-shadow 125ms;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.08);
+}
