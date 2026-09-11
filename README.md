@@ -16,8 +16,6 @@ diagrams.
 .
 ├── mkdocs.yml              # MkDocs and Material theme configuration
 ├── requirements.txt        # dependencies needed to build the docs
-├── overrides/              # theme template overrides (announcement bar)
-│   └── main.html
 └── docs/                   # documentation sources in Markdown
     ├── index.md
     ├── faq.md
@@ -132,8 +130,11 @@ configures:
 - code copying, links between content tabs, tooltips,
 - the `pymdownx.*` extensions required by Material features (collapsible
   admonitions, tabs, Mermaid diagrams, task lists, keyboard keys),
-- a custom stylesheet `docs/stylesheets/extra.css` and the overridden
-  `overrides/main.html` template.
+- a custom stylesheet `docs/stylesheets/extra.css`.
+
+There is no announcement bar and no `theme.custom_dir`: the changelog is reached
+through the **Help** section of the navigation tree, and the release support
+dates are listed on the home page.
 
 ## See also
 
