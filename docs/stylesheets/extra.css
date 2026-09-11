@@ -4,6 +4,30 @@
   --md-code-font: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
 }
 
+/* Darker indigo for the header and other primary-colored elements. The selector
+   matches the one the theme uses for palette.primary: indigo, so these values
+   win over the theme defaults in both the light and the dark scheme. */
+[data-md-color-primary="indigo"] {
+  --md-primary-fg-color: rgb(40, 53, 147);
+  --md-primary-fg-color--light: rgb(57, 73, 171);
+  --md-primary-fg-color--dark: rgb(26, 35, 126);
+}
+
+/* Search field in the header: shades of the same indigo instead of the theme's
+   translucent black overlay. Scoped to the same breakpoint the theme uses for
+   the in-header search, so the full-screen search on small viewports keeps its
+   light background. The expanded (focused) field stays white, because the theme
+   rule for [data-md-toggle=search]:checked is more specific. */
+@media screen and (min-width: 60em) {
+  .md-search__form {
+    background-color: rgb(57, 73, 171);
+  }
+
+  .md-search__form:hover {
+    background-color: rgb(74, 90, 189);
+  }
+}
+
 /* Slightly wider content column, since the docs contain many reference tables. */
 .md-grid {
   max-width: 68rem;
