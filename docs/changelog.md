@@ -13,7 +13,7 @@ versioning: breaking changes land only in major releases, and patch releases
 
 ## 4.2.1 - 2026-08-18
 
-Patch release. Recommended for every 4.2 installation.
+Patch release. Recommended for every 4.2 installation. Editing by IDE rehearsal.
 
 **Fixed**
 
