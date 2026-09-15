@@ -10,9 +10,12 @@ copyright: >
   Copyright &copy; 2026 Nimbus Software sp. z o.o. -
   entirely fictional content, prepared as an example MkDocs documentation set.
 
-repo_url: https://github.com/nimbus-software/orion-platform
-repo_name: nimbus-software/orion-platform
-edit_uri: edit/main/docs/
+# Real repository behind this example. It drives the header repository link,
+# the "Edit this page" button, and the "View source of this page" button.
+# edit_uri must name the default branch on the remote, which is master here.
+repo_url: https://github.com/wojciech777/MkDocs_test
+repo_name: wojciech777/MkDocs_test
+edit_uri: edit/master/docs/
 
 docs_dir: docs
 site_dir: site
@@ -82,6 +85,7 @@ theme:
     - search.share
     # Content
     - content.action.edit
+    - content.action.view
     - content.code.copy
     - content.code.annotate
     - content.tabs.link
@@ -155,8 +159,8 @@ extra:
     deprecated: Deprecated
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/nimbus-software/orion-platform
-      name: Source code
+      link: https://github.com/wojciech777/MkDocs_test
+      name: Documentation sources
     - icon: fontawesome/solid/life-ring
       link: https://support.nimbus.example.com
       name: Support portal
